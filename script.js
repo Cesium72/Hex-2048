@@ -38,6 +38,13 @@ var tiles = [
       [0,0,0]
 ];
 
+if(!localStorage.score) localStorage.score = "0";
+if(!localStorage.game) localStorage.game = JSON.stringify(tiles);
+if(!localStorage.best) localStorage.best = "0";
+var playerScore = parseInt(localStorage.score);
+var best = parseInt(localStorage.best);
+tiles = JSON.parse(localStorage.game);
+
 function slide(row) {
     var len = row.length;
     row = row.filter(a => a);
@@ -63,6 +70,19 @@ function rotate(b) { // b is for board, but i'll type it a lot
 
 const slideAll = (board) => board.map(slide);
 
+function score(board) {
+    let total = 0;
+    for(var row of board) {
+        row = row.filter(a => a);
+        for(var i = 0; i < row.length - 1; i++) {
+            if(row[i] == row[i + 1]) {
+                total += row[i];
+                i++;
+            }
+        }
+    }
+    return 2 * total;
+}
 function circle(x, y, color) {
     ctx.fillStyle = color || "black";
     ctx.beginPath();
@@ -83,6 +103,8 @@ function display() {
             ctx.fillText(tiles[i][j], pos[0], pos[1]);
         }
     }
+    document.getElementById("score").textContent = playerScore;
+    document.getElementById("best").textContent = best;
 }
 
 function checkGameOver() {
@@ -100,6 +122,12 @@ function play(rc) { // Rotation count
     }
 
     if(JSON.stringify(tiles) != JSON.stringify(slideAll(tiles))) {
+        playerScore += score(tiles);
+        localStorage.score = playerScore;
+        if(playerScore > best) {
+            best = playerScore;
+            localStorage.best = playerScore;
+        }
         tiles = slideAll(tiles);
         var empty = [];
         for(var i = 0; i < tiles.length; i++) {
@@ -114,6 +142,7 @@ function play(rc) { // Rotation count
     for(var i = 0; i < rc; i++) {
         tiles = rotate(tiles);
     }
+    localStorage.game = JSON.stringify(tiles);
     display();
     if(checkGameOver()) setTimeout(() => {
         ctx.fillStyle = "#020";
@@ -142,5 +171,8 @@ function reset() {
         [0,2,0,0],
         [0,0,0]
     ];
+    localStorage.game = JSON.stringify(tiles);
+    localStorage.score = 0;
+    playerScore = 0;
     display();
 }
