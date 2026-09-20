@@ -17,23 +17,35 @@
                 <b>Best:</b><br><span id="best">0</span>
             </div>
         </div>
-        <canvas id="game"width="400"height="400"></canvas>
+        <canvas id="canvas"width="400"height="400"></canvas>
         <div class="bar">
-            <button>Reset</button>
-            <button>Help</button>
+            <button onclick="reset()">Reset</button>
+            <button onclick="toggle(true)">Help</button>
         </div>
     </div>
-    <div id="help">
-        <button>Back</button>
+    <div id="help"style="display:none;">
+        <button onclick="toggle();">Back</button>
         <h2>What is this?</h2>
         <p>This is like the classic number game, 2048, but instead of a square, it's a hexagon!
             When you make a move, (for example, right), all the tiles will move as far to the right
             as they can. If two tiles with the same number hit each other, they combine into the
-            next one up! If you haven't played classic 2048 before, go to <a href="https://play2048.co">play2048.co</a>
+            next one up! If you haven't played classic 2048 before, go to <a href="https://play2048.co" target="_blank">play2048.co</a>
             to try it first.</p>
         <h2>How do I control it?</h2>
         <p>
-            Option 1:
+            To control the game with the keyboard, use the keys ZAWEDX, because they kind of make a hexagon around the "s" key.
+            On a touchscreen, you can swipe in the direction to go. Just remember that the pieces travel toward corners, not
+            edges like in regular 2048.
+        </p>
+        <h2>Hey! The pieces aren't moving properly!</h2>
+        <p>Yes, they are. The movement of the pieces can seem a little counterintuitive, such as pices not going all the way down
+            when down-left is pressed, but I can promise you that the movement is working just as it is intended to.
+            The pieces will move in <u>straight lines</u> for as far as they can. This means that down-left makes the pieces
+            move, well, down-left as far as they can go.
+        </p>
+        <h2>How do I win?</h2>
+        <p>This seems to be a little easier than regular 2048, so you won't get notified if you win. I find 4096 to be a
+            reasonable goal. As for strategy? That's for you to figure out :)
         </p>
     </div>
     <script src="script.js"></script>

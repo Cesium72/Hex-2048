@@ -1,4 +1,4 @@
-const ctx = document.getElementById("game").getContext("2d");
+const ctx = document.getElementById("canvas").getContext("2d");
 const r3 = Math.sqrt(3);
 const positions = [
     [130, 200, 270].map(a => [a, 200 - 70 * r3]),
@@ -71,6 +71,8 @@ function circle(x, y, color) {
 }
 
 function display() {
+    ctx.fillStyle = "#020";
+    ctx.fillRect(0, 169, 400, 62);
     for(var i = 0; i < 5; i++) {
         for(var j = 0; j < tiles[i].length; j++) {
             var pos = positions[i][j];
@@ -126,3 +128,19 @@ document.addEventListener("keydown", (e) => {
 })
 
 display();
+
+function toggle(b) {
+    document.getElementById("game").style.display = b ? "none" : "block";
+    document.getElementById("help").style.display = b ? "block" : "none";
+}
+
+function reset() {
+    if(confirm("Are you sure?")) tiles = [
+        [0,0,0],
+        [0,0,2,0],
+        [0,0,0,0,0],
+        [0,2,0,0],
+        [0,0,0]
+    ];
+    display();
+}

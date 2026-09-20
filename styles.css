@@ -16,7 +16,7 @@ body > * {
     grid-template-columns: auto auto;
 }
 
-.bar > * {
+.bar > *, button {
     background-color:#454;
     margin:5px;
     border-radius:10px;
@@ -29,4 +29,12 @@ button {
     outline:none;
     color:white;
     font-weight:bold;
+}
+
+#help button {
+    width:100%;
+}
+
+a {
+    color:white;
 }
