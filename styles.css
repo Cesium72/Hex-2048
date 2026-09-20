@@ -1,0 +1,32 @@
+body {
+    background-color:#020;
+}
+
+body > * {
+    display:block;
+    width:400px;
+    margin:auto;
+    font-family:monospace;
+    text-align:center;
+    color:white;
+}
+
+.bar {
+    display:grid;
+    grid-template-columns: auto auto;
+}
+
+.bar > * {
+    background-color:#454;
+    margin:5px;
+    border-radius:10px;
+    padding:5px 0;
+}
+
+button {
+    cursor:pointer;
+    border:none;
+    outline:none;
+    color:white;
+    font-weight:bold;
+}

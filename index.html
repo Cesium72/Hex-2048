@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex 2048</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <h1>Hex 2048</h1>
+    <div id="game">
+        <div class="bar">
+            <div>
+                <b>Score:</b><br><span id="score">0</span>
+            </div>
+            <div>
+                <b>Best:</b><br><span id="best">0</span>
+            </div>
+        </div>
+        <canvas id="game"width="400"height="400"></canvas>
+        <div class="bar">
+            <button>Reset</button>
+            <button>Help</button>
+        </div>
+    </div>
+    <div id="help">
+        <button>Back</button>
+        <h2>What is this?</h2>
+        <p>This is like the classic number game, 2048, but instead of a square, it's a hexagon!
+            When you make a move, (for example, right), all the tiles will move as far to the right
+            as they can. If two tiles with the same number hit each other, they combine into the
+            next one up! If you haven't played classic 2048 before, go to <a href="https://play2048.co">play2048.co</a>
+            to try it first.</p>
+        <h2>How do I control it?</h2>
+        <p>
+            Option 1:
+        </p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
