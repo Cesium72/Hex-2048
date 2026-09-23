@@ -176,3 +176,23 @@ function reset() {
     playerScore = 0;
     display();
 }
+
+// Mobile logic
+
+var dragging = false;
+var dragOrigin = [0, 0]
+
+document.addEventListener("mousedown", (e) => {dragging = true; dragOrigin = [e.clientX, e.clientY]});
+document.addEventListener("blur", () => {dragging = false});
+document.addEventListener("mouseup", (e) => {
+    var xRel = e.clientX - dragOrigin[0];
+    var yRel = e.clientY - dragOrigin[1];
+    if(xRel ** 2 + yRel ** 2 < 100 ** 2) return;
+    var slope = yRel / xRel;
+    var move = 1;
+    if(slope < -1/r3) move = 5;
+    else if(slope < 1/r3) move = 0;
+    if(xRel < 0) move += 3;
+    console.log(move % 6);
+    play(move % 6);
+});
