@@ -182,11 +182,11 @@ function reset() {
 var dragging = false;
 var dragOrigin = [0, 0]
 
-document.addEventListener("mousedown", (e) => {dragging = true; dragOrigin = [e.clientX, e.clientY]});
-document.addEventListener("blur", () => {dragging = false});
-document.addEventListener("mouseup", (e) => {
-    var xRel = e.clientX - dragOrigin[0];
-    var yRel = e.clientY - dragOrigin[1];
+document.addEventListener("touchstart", (e) => {dragging = true; dragOrigin = [e.changedTouches[0].screenX, e.changedTouches[0].screenY]});
+document.addEventListener("touchend", (e) => {
+    var xRel = e.changedTouches[0].screenX - dragOrigin[0];
+    var yRel = e.changedTouches[0].screenY - dragOrigin[1];
+    console.log(dragOrigin, [xRel, yRel]);
     if(xRel ** 2 + yRel ** 2 < 100 ** 2) return;
     var slope = yRel / xRel;
     var move = 1;
